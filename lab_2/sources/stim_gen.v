@@ -38,8 +38,15 @@ module stim_gen(
     
     initial begin //edit enter & exit however you like
     initialise();
-    enter(17); //testing > 15 enter
-    exit(20); //testing  < 15 exit
+    enter(5); //testing entering
+    exit(3); //testing exit
+    
+    initialise(); //testing > 15 enter
+    enter(17); 
+    
+    initialise(); //testing  < 15 exit
+    enter(4);
+    exit(8); 
     $stop;
     end
     
@@ -55,6 +62,7 @@ module stim_gen(
     
     task initialise(); //system initilisation
     begin 
+    $display("NEW RUN!!");
     a = 0;
     b = 0;
     inc_exp = 0;

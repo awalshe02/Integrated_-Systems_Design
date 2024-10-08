@@ -45,22 +45,14 @@ module scoreboard(
         end
         else begin
             if(exp_count != prev_exp ||extended_fsm != prev_fsm) begin
-                file = $fopen("C:/Users/WALSHEAO/4C1/lab_2/lab_1/log.txt", "a"); //open file (change directory location if needs be!)
-    
-                if(!file) begin //make sure it open correctly
-                    $display("error!!");
-                    $finish;
-                end
-        
-        
-                $fdisplay(file, "Expected count: %d \n", exp_count); //print expected count
-                $fdisplay(file, "FSM count: %d \n", fsm_count); //print fsm count
+             
+                $display("Expected count: %d \n", exp_count); //print expected count
+                $display("FSM count: %d \n", fsm_count); //print fsm count
         
                 if(exp_count == extended_fsm) //check to see if the same
-                    $fdisplay(file, "PASS, counters are the same :)))\n");
-                else $fdisplay(file, "FAIL, counters are the different :(((\n");
-        
-                $fclose(file); //close file
+                    $display("PASS, counters are the same :)))\n");
+                else 
+                    $display("FAIL, counters are the different :(((\n");
                 
                 prev_exp <= exp_count;
                 prev_fsm <= extended_fsm;
